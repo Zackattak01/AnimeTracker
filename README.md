@@ -11,4 +11,4 @@ The current information supported is a Name, Season Count, Episode Count, and a 
 
 # Theme
 
-Dark theme only.  The dark theme in the app needs work, but its better than a light theme.
+Only dark theme is available at the moment.  The dark theme in the app needs work, but its better than a light theme.
