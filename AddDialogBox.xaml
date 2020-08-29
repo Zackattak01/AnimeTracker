@@ -84,13 +84,13 @@
 
         <!-- Top Margin -->
         <Label Grid.Column="0" Grid.Row="1">Season Count:</Label>
-        <TextBox Name="seasonCountTextBox" Grid.Column="1" Grid.Row="1">
+        <TextBox Name="seasonCountTextBox" Grid.Column="1" Grid.Row="1" PreviewTextInput="NumberValidationTextBox">
 
         </TextBox>
         
         <!-- Top Margin -->
         <Label Grid.Column="0" Grid.Row="2">Episode Count:</Label>
-        <TextBox Name="episodeCountTextBox" Grid.Column="1" Grid.Row="2">
+        <TextBox Name="episodeCountTextBox" Grid.Column="1" Grid.Row="2" PreviewTextInput="NumberValidationTextBox">
 
         </TextBox>
         
