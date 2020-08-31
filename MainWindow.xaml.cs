@@ -23,14 +23,8 @@ namespace AnimeTracker
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		//static List<AnimeInfo> currentlyWatching = new List<AnimeInfo>();
-		//static List<AnimeInfo> upToDate = new List<AnimeInfo>();
-		//static List<AnimeInfo> finished = new List<AnimeInfo>();
-		//static List<AnimeInfo> queue = new List<AnimeInfo>();
 
-		
-
-		public static Dictionary<int, List<AnimeInfo>> dict;
+		private Dictionary<int, List<AnimeInfo>> dict;
 
 		public MainWindow()
 		{
@@ -82,7 +76,7 @@ namespace AnimeTracker
 
 
 			this.ListView.Items.Refresh();
-			JsonManager.Save();
+			JsonManager.Save(dict);
 			
 		}
 
@@ -95,7 +89,7 @@ namespace AnimeTracker
 			dict[this.ComboBox.SelectedIndex].Remove(ListView.SelectedValue as AnimeInfo);
 
 			this.ListView.Items.Refresh();
-			JsonManager.Save();
+			JsonManager.Save(dict);
 		}
 		private void Button_Click_Edit(object sender, RoutedEventArgs e)
 		{
@@ -128,7 +122,7 @@ namespace AnimeTracker
 
 
 			this.ListView.Items.Refresh();
-			JsonManager.Save();
+			JsonManager.Save(dict);
 		}
 
 		private void Button_Click_Up(object sender, RoutedEventArgs e)
@@ -149,7 +143,7 @@ namespace AnimeTracker
 			}
 
 			this.ListView.Items.Refresh();
-			JsonManager.Save();
+			JsonManager.Save(dict);
 		}
 
 		private void Button_Click_Down(object sender, RoutedEventArgs e)
@@ -171,7 +165,7 @@ namespace AnimeTracker
 			
 
 			this.ListView.Items.Refresh();
-			JsonManager.Save();
+			JsonManager.Save(dict);
 		}
 
 		private void ToolBar_Loaded(object sender, RoutedEventArgs e)
@@ -204,36 +198,6 @@ namespace AnimeTracker
 		}
 	}
 
-	public class AnimeInfo
-	{
-		public string Name { get; set; }
-		public string SeasonCount { get; set; }
-		public string EpisodeCount { get; set; }
-		public string Url { get; set; }
+	
 
-
-		public AnimeInfo(string name, int seasonCount, int episodeCount)
-		{
-			Name = name;
-			SeasonCount = seasonCount.ToString();
-			EpisodeCount = episodeCount.ToString();
-
-		}
-
-		
-		public AnimeInfo(string name, string seasonCount, string episodeCount, string url = "")
-		{
-			Name = name;
-			SeasonCount = seasonCount;
-			EpisodeCount = episodeCount;
-
-			Url = url;
-		}
-
-
-		public AnimeInfo()
-		{
-
-		}
-	}
 }

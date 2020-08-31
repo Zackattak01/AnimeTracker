@@ -13,9 +13,9 @@ namespace AnimeTracker
 	{
 		private static string path = Environment.CurrentDirectory + "/save.json";
 
-		public static void Save()
+		public static void Save(object saveData)
 		{
-			string jsonString = JsonConvert.SerializeObject(MainWindow.dict);
+			string jsonString = JsonConvert.SerializeObject(saveData);
 
 			File.WriteAllText(path, jsonString);
 		}
