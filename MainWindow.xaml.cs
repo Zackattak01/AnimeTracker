@@ -91,6 +91,7 @@ namespace AnimeTracker
 			this.ListView.Items.Refresh();
 			JsonManager.Save(dict);
 		}
+
 		private void Button_Click_Edit(object sender, RoutedEventArgs e)
 		{
 			if (ListView.SelectedValue == null)
