@@ -197,6 +197,44 @@ namespace AnimeTracker
 
 			Process.Start(info);
 		}
+
+		private void Button_Click_Move_To (object sender, RoutedEventArgs e)
+		{
+			if (ListView.SelectedValue == null)
+				return;
+
+			MenuItem menuItem = sender as MenuItem;
+			int selectedList = this.ComboBox.SelectedIndex;
+			int listToSendTo = -1;
+
+			switch (menuItem.Header)
+			{
+				case "Currently Watching":
+					listToSendTo = 0;
+					break;
+				case "Up To Date":
+					listToSendTo = 1;
+					break;
+				case "Finished":
+					listToSendTo = 2;
+					break;
+				case "Queue":
+					listToSendTo = 3;
+					break;
+				
+			}
+
+			if (selectedList == listToSendTo)
+				return;
+
+			AnimeInfo animeToMove = ListView.SelectedValue as AnimeInfo;
+
+			dict[selectedList].Remove(animeToMove);
+			dict[listToSendTo].Add(animeToMove);
+
+			this.ListView.Items.Refresh();
+			JsonManager.Save(dict);
+		}
 	}
 
 	
