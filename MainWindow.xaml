@@ -107,7 +107,41 @@
                 </Style.Triggers>
             </Style>
 
+            <Style x:Key="{x:Static ToolBar.MenuStyleKey}" TargetType="{x:Type Menu}">
+                <Setter Property="Background" Value="#303030"/>
+                <Setter Property="Foreground" Value="WhiteSmoke"/>
+                <Setter Property="Margin" Value="0,2,0,0"/>
 
+                
+                
+                
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#575757"/>
+                    </Trigger>
+                </Style.Triggers>
+
+            </Style>
+
+            <Style TargetType="{x:Type MenuItem}">
+                <Setter Property="Foreground" Value="WhiteSmoke"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type MenuItem}">
+                            <Border x:Name="Bd" Padding="17,0,17,0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" Uid="Border_38">
+                                <ContentPresenter x:Name="ContentPresenter"  Content="{TemplateBinding Header}" Grid.Column="1" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Uid="ContentPresenter_33"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#575757"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </Grid.Resources>
         
         
@@ -149,6 +183,21 @@
                 <Button Content="Up" Click="Button_Click_Up"/>
                 <Separator/>
                 <Button Content="Down" Click="Button_Click_Down"/>
+                <Separator/>
+                <Menu >
+                    <MenuItem  Header="Move To" >
+                        <MenuItem.Style>
+                            <Style>
+                                
+                            </Style>
+                        </MenuItem.Style>
+                        
+                        <MenuItem Header="Currently Watching" Click="Button_Click_Move_To"/>
+                        <MenuItem Header="Up To Date" Click="Button_Click_Move_To"/>
+                        <MenuItem Header="Finished" Click="Button_Click_Move_To"/>
+                        <MenuItem Header="Queue" Click="Button_Click_Move_To"/>
+                    </MenuItem>
+                </Menu>
 
 
             </ToolBar>
