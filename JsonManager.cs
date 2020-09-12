@@ -6,9 +6,6 @@ using Newtonsoft.Json;
 
 namespace AnimeTracker
 {
-
-	
-
 	public static class JsonManager
 	{
 		private static string path = Environment.CurrentDirectory + "/save.json";

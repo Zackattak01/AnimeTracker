@@ -11,15 +11,12 @@ namespace AnimeTracker
 		public string EpisodeCount { get; set; }
 		public string Url { get; set; }
 
-
 		public AnimeInfo(string name, int seasonCount, int episodeCount)
 		{
 			Name = name;
 			SeasonCount = seasonCount.ToString();
 			EpisodeCount = episodeCount.ToString();
-
 		}
-
 
 		public AnimeInfo(string name, string seasonCount, string episodeCount, string url = "")
 		{
