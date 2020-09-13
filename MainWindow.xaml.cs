@@ -28,36 +28,63 @@ namespace AnimeTracker
 
 		public MainWindow()
 		{
-			
 			InitializeComponent();
 
 			Dictionary<int, List<AnimeInfo>> newDict = JsonManager.Load();
+
 			if (newDict == null)
 			{
-				dict = new Dictionary<int, List<AnimeInfo>>
-				{
-					{0, new List<AnimeInfo>() },
-					{1, new List<AnimeInfo>() },
-					{2, new List<AnimeInfo>() },
-					{3, new List<AnimeInfo>() }
-				};
+				dict = new Dictionary<int, List<AnimeInfo>>();
+				
+				foreach (var item in (Status[])Enum.GetValues(typeof(Status)))
+                {
+					dict.Add((int)item, new List<AnimeInfo>());
+				}
 			}
 			else
 			{
 				dict = newDict;
 			}
 
-
-
 			this.ListView.ItemsSource = dict[0];
 
+			List<ComboBoxItem> comboBoxItems = new List<ComboBoxItem>();
+
+			foreach (var item in (Status[])Enum.GetValues(typeof(Status)))
+			{
+				var tmpMenuItem = new ComboBoxItem()
+				{
+					Content = item.Description()
+				};
+
+				comboBoxItems.Add(tmpMenuItem);
+			}
+
+			ComboBox.ItemsSource = comboBoxItems;
+
+			ComboBox.SelectedIndex = 0;
+
+			List<MenuItem> menuItems = new List<MenuItem>();
+
+            foreach (var item in (Status[])Enum.GetValues(typeof(Status)))
+            {
+				var tmpMenuItem = new MenuItem()
+				{
+					Header = item.Description()
+				};
+
+				tmpMenuItem.Click += Button_Click_Move_To;
+
+				menuItems.Add(tmpMenuItem);
+			}
+
+			menuItemMoveTo.ItemsSource = menuItems;
 		}
 
 		private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			if(this.ListView != null)
 				this.ListView.ItemsSource = dict[this.ComboBox.SelectedIndex];
-			
 		}
 
 		private void Button_Click_Add(object sender, RoutedEventArgs e)
@@ -73,11 +100,8 @@ namespace AnimeTracker
 				dict[this.ComboBox.SelectedIndex].Add(addDialogBox.AnimeResult);
 			}
 
-
-
 			this.ListView.Items.Refresh();
 			JsonManager.Save(dict);
-			
 		}
 
 		private void Button_Click_Remove(object sender, RoutedEventArgs e)

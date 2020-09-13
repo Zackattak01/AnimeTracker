@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="Anime Tracker" Icon="favicon.ico" Height="450" Width="800" >
 
-
-
-    <Grid Background="#303030">
+	<Grid Background="#303030">
 
         <Grid.Resources>
             <Style TargetType="{x:Type Button}">
@@ -168,10 +166,6 @@
 
                 <ComboBox  BorderBrush="#575757" Name="ComboBox" Grid.Row="1" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ComboBox_SelectionChanged" Background="#303030" Foreground="WhiteSmoke">
                     
-                    <ComboBoxItem Content="Currently Watching" IsSelected="True"/>
-                    <ComboBoxItem Content="Up To Date"/>
-                    <ComboBoxItem Content="Finished"/>
-                    <ComboBoxItem Content="Queue"/>
                 </ComboBox>
                 <Separator/>
                 <Button Content="Add" Click="Button_Click_Add" Foreground="WhiteSmoke" />
@@ -185,17 +179,13 @@
                 <Button Content="Down" Click="Button_Click_Down"/>
                 <Separator/>
                 <Menu >
-                    <MenuItem  Header="Move To" >
+					<MenuItem  Header="Move To" Name="menuItemMoveTo">
                         <MenuItem.Style>
                             <Style>
                                 
                             </Style>
                         </MenuItem.Style>
                         
-                        <MenuItem Header="Currently Watching" Click="Button_Click_Move_To"/>
-                        <MenuItem Header="Up To Date" Click="Button_Click_Move_To"/>
-                        <MenuItem Header="Finished" Click="Button_Click_Move_To"/>
-                        <MenuItem Header="Queue" Click="Button_Click_Move_To"/>
                     </MenuItem>
                 </Menu>
 
