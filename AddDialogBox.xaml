@@ -10,7 +10,7 @@
         Width="300"
         MinHeight="10"
         MinWidth="300"
-        ResizeMode="CanResizeWithGrip"
+        ResizeMode="NoResize"
         ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner" 
         FocusManager.FocusedElement="{Binding ElementName=nameTextBox}" Background="#303030">

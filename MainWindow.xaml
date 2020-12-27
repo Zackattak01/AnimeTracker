@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimeTracker"
         mc:Ignorable="d"
-        Title="Anime Tracker" Icon="favicon.ico" Height="450" Width="800" >
+        Title="Anime Tracker" Icon="favicon.ico" Height="450" Width="800" ResizeMode="CanMinimize">
 
-	<Grid Background="#303030">
+    <Grid Background="#303030">
 
         <Grid.Resources>
             <Style TargetType="{x:Type Button}">
@@ -16,7 +16,7 @@
                 <Setter Property="Margin" Value="0,0,0,0" />
                 <Setter Property="Foreground" Value="WhiteSmoke"/>
                 <Setter Property="Background" Value="#303030"/>
-                
+
 
                 <Setter Property="Template">
                     <Setter.Value>
@@ -61,8 +61,8 @@
                 <Setter Property="Foreground" Value="WhiteSmoke"/>
 
                 <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
                             <Border Name="Bd" 
                             Background="{TemplateBinding Background}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
@@ -74,7 +74,7 @@
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Border>
                         </ControlTemplate>
-                </Setter.Value>
+                    </Setter.Value>
                 </Setter>
 
                 <Style.Triggers>
@@ -92,15 +92,15 @@
             <Style TargetType="{x:Type ListViewItem}">
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        
+
                         <Setter Property="Background" Value="Gray"/>
                         <Setter Property="BorderBrush" Value="Transparent"/>
-                        
+
                     </Trigger>
                     <Trigger Property="IsSelected" Value="True">
                         <Setter Property="Background" Value="#575757"/>
                         <Setter Property="BorderBrush" Value="#575757"/>
-                        
+
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -110,9 +110,9 @@
                 <Setter Property="Foreground" Value="WhiteSmoke"/>
                 <Setter Property="Margin" Value="0,2,0,0"/>
 
-                
-                
-                
+
+
+
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
                         <Setter Property="Background" Value="#575757"/>
@@ -141,14 +141,15 @@
                 </Style.Triggers>
             </Style>
         </Grid.Resources>
-        
-        
+
+
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="8.692"/>
+            <ColumnDefinition Width="91.308"/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
             <RowDefinition />
@@ -165,7 +166,7 @@
                 </ToolBar.Resources>
 
                 <ComboBox  BorderBrush="#575757" Name="ComboBox" Grid.Row="1" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ComboBox_SelectionChanged" Background="#303030" Foreground="WhiteSmoke">
-                    
+
                 </ComboBox>
                 <Separator/>
                 <Button Content="Add" Click="Button_Click_Add" Foreground="WhiteSmoke" />
@@ -179,13 +180,13 @@
                 <Button Content="Down" Click="Button_Click_Down"/>
                 <Separator/>
                 <Menu >
-					<MenuItem  Header="Move To" Name="menuItemMoveTo">
+                    <MenuItem  Header="Move To" Name="menuItemMoveTo">
                         <MenuItem.Style>
                             <Style>
-                                
+
                             </Style>
                         </MenuItem.Style>
-                        
+
                     </MenuItem>
                 </Menu>
 
@@ -193,7 +194,7 @@
             </ToolBar>
         </ToolBarTray>
 
-        <ListView Grid.ColumnSpan="2" Grid.Row="1" Name="ListView" Background="#303030" Foreground="White">
+        <ListView Grid.ColumnSpan="3" Grid.Row="1" Name="ListView" Background="#303030" Foreground="White">
             <ListView.View >
                 <GridView>
                     <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}"/>
@@ -204,7 +205,7 @@
             </ListView.View>
         </ListView>
 
-        <Button Grid.Column="2" Grid.Row="2" Content="Watch" Click="Button_Click_Watch"/>
+        <Button Grid.Column="2" Grid.Row="2" Content="Watch" Click="Button_Click_Watch" Margin="6,13,15,12"/>
 
 
     </Grid>

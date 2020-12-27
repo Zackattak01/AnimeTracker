@@ -29,7 +29,7 @@ namespace AnimeTracker
 		public MainWindow()
 		{
 			InitializeComponent();
-
+			
 			Dictionary<int, List<AnimeInfo>> newDict = JsonManager.Load();
 
 			if (newDict == null)
