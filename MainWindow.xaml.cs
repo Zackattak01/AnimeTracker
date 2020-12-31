@@ -211,13 +211,13 @@ namespace AnimeTracker
 		private void Button_Click_Watch(object sender, RoutedEventArgs e)
 		{
 			AnimeInfo selectedAnime = ListView.SelectedValue as AnimeInfo;
-			try
+			if(ListView.SelectedValue != null)
 			{
 				string application = Environment.GetEnvironmentVariable("ProgramFiles(x86)") + @"\Google\Chrome\Application\chrome.exe";
 				ProcessStartInfo info = new ProcessStartInfo(application, selectedAnime.Url);
 				Process.Start(info);
 			}
-			catch (Exception exception)
+			else
 			{
 				MessageBox.Show("Please select an anime");
 			}
