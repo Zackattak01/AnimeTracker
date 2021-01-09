@@ -29,7 +29,7 @@ namespace AnimeTracker
 		public MainWindow()
 		{
 			InitializeComponent();
-
+			
 			Dictionary<int, List<AnimeInfo>> newDict = JsonManager.Load();
 
 			if (newDict == null)
@@ -211,15 +211,16 @@ namespace AnimeTracker
 		private void Button_Click_Watch(object sender, RoutedEventArgs e)
 		{
 			AnimeInfo selectedAnime = ListView.SelectedValue as AnimeInfo;
-
-			if (selectedAnime.Url == "" || selectedAnime.Url == null)
-				return;
-
-			string application = Environment.GetEnvironmentVariable("ProgramFiles(x86)") + @"\Google\Chrome\Application\chrome.exe";
-			ProcessStartInfo info = new ProcessStartInfo(application, selectedAnime.Url);
-
-
-			Process.Start(info);
+			if(ListView.SelectedValue != null)
+			{
+				string application = Environment.GetEnvironmentVariable("ProgramFiles(x86)") + @"\Google\Chrome\Application\chrome.exe";
+				ProcessStartInfo info = new ProcessStartInfo(application, selectedAnime.Url);
+				Process.Start(info);
+			}
+			else
+			{
+				MessageBox.Show("Please select an anime");
+			}
 		}
 
 		private void Button_Click_Move_To (object sender, RoutedEventArgs e)
