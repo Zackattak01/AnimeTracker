@@ -214,9 +214,11 @@ namespace AnimeTracker
 			AnimeInfo selectedAnime = ListView.SelectedValue as AnimeInfo;
 			if(ListView.SelectedValue != null)
 			{
-				//string application = Environment.GetEnvironmentVariable("ProgramFiles(x86)") + @"\Google\Chrome\Application\chrome.exe";
-				//ProcessStartInfo info = new ProcessStartInfo(selectedAnime.Url);
-				//Process.Start(info);
+				if (string.IsNullOrEmpty(selectedAnime.Url))
+				{
+					MessageBox.Show("This anime does not have a url associated with it! Please add one to use the watch feature.");
+					return;
+				}
 
 				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 				{
