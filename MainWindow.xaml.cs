@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace AnimeTracker
 {
@@ -213,9 +214,23 @@ namespace AnimeTracker
 			AnimeInfo selectedAnime = ListView.SelectedValue as AnimeInfo;
 			if(ListView.SelectedValue != null)
 			{
-				string application = Environment.GetEnvironmentVariable("ProgramFiles(x86)") + @"\Google\Chrome\Application\chrome.exe";
-				ProcessStartInfo info = new ProcessStartInfo(application, selectedAnime.Url);
-				Process.Start(info);
+				//string application = Environment.GetEnvironmentVariable("ProgramFiles(x86)") + @"\Google\Chrome\Application\chrome.exe";
+				//ProcessStartInfo info = new ProcessStartInfo(selectedAnime.Url);
+				//Process.Start(info);
+
+				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+				{
+					var url = selectedAnime.Url.Replace("&", "^&");
+					Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+				}
+				else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+				{
+					Process.Start("xdg-open", selectedAnime.Url);
+				}
+				else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+				{
+					Process.Start("open", selectedAnime.Url);
+				}
 			}
 			else
 			{
